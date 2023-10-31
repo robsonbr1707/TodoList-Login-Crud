@@ -1,0 +1,10 @@
+:root{
+    --color-black: rgb(26, 21, 21);
+    --color-black2: rgb(41, 38, 38);
+    --color-black3: rgba(41, 38, 38, 0.849);
+
+    --color-gray: rgb(209, 208, 208);
+
+    --color-green: rgba(3, 112, 3, 0.767);
+    --color-green2: rgba(2, 131, 2, 0.945);
+}

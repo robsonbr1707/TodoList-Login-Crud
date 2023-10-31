@@ -12,4 +12,23 @@ class Database
             exit;
         }
     }
+
+    public function validate(array $fields)
+    {
+        $fields = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        $errors = [];
+        foreach ($fields as $field => $value) {
+            $cleanValue = trim($value);
+            if (empty($value)) {
+                $errors[$field] = "Preencha o campo $field !";
+            }else{
+                $cleanValue = strip_tags($cleanValue);
+                $cleanValue = htmlspecialchars($cleanValue, ENT_QUOTES);
+                if ($cleanValue !== $value) {
+                    $errors[$field] = "O Campo $field está invalido!";
+                }
+            }
+        }
+        return $errors;
+    }
 }

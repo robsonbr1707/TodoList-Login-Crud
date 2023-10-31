@@ -2,6 +2,22 @@
 
 class Core
 {
+    public function __construct()
+    {
+        if ($_SERVER["SERVER_NAME"] == '127.0.0.1') {
+            define('WEB_LOCATION','/meus-projetos/todolist-login-crud/');
+        }else{
+            //define('WEB_LOCATION','/');
+        }
+
+        define('VIEWS', WEB_LOCATION.'app/views/');
+
+        //assets
+        define('ASSETS', WEB_LOCATION.'app/assets/');
+        define('JS', ASSETS.'js/');
+        define('CSS', ASSETS.'css/');
+    }
+
     public function run($routes) 
     {
         

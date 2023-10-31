@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
-    <title><?= $title ?></title>
-</head>
-<body>
+<?php include_once ('layouts/header.php'); ?>
     <section id="section-form">
         <form id="form">
             <input type="text" name="title" placeholder="Título">
@@ -33,5 +24,4 @@
             </tr>
         </tbody>
     </table>
-</body>
-</html>
+<?php include_once ('layouts/footer.php'); ?>
