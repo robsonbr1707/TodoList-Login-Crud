@@ -7,7 +7,7 @@ $routes = [
     '/lists/{id}' => 'ListController@show',
 
     //Login
-    '/login'      => 'AuthenticationController@login',
-    '/register'    => 'AuthenticationController@register',
+    '/login'             => 'AuthenticationController@login',
+    '/register'          => 'AuthenticationController@register',
     '/register-store'    => 'AuthenticationController@registerStore',
 ];

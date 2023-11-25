@@ -22,10 +22,10 @@ class AuthenticationController extends View
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $users = new Users;
-            $create = $users->create($fields);
-            if (is_array($create)) {
-                $olds = ['username' => $fields['username'], 'email' => $fields['email']];
-                return $this->render('auth/login', ['errors' => array_values($create), 'old' => $olds]);
+            $select = $users->find($fields);
+            if (is_array($select)) {
+                $olds = ['email' => $fields['email']];
+                return $this->render('auth/login', ['errors' => array_values($select), 'old' => $olds]);
             }
         }
     }

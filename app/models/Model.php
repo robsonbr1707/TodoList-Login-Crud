@@ -1,12 +1,30 @@
 <?php
 
-class Users extends Database
+abstract class Model extends Database
 {
-    private $db;
+    private $db, $table;
 
     public function __construct()
     {
         $this->db = $this->getConnection();
+    }
+
+    public function catchErros($error)
+    {
+        //
+    }
+
+    protected function all($params = "*")
+    {
+        try {
+            $tb = $this->table;
+            $sql = "SELECT $params FROM $tb";
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            return $query->fetch(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            die('Erro:'.$e);
+        }
     }
 
     public function create(array $fields)
@@ -15,7 +33,7 @@ class Users extends Database
         $fields['password'] = password_hash($fields['password'], PASSWORD_BCRYPT);
         $data = $fields;
         $validate = $this->validate($data);
-        if ($validate) { return $validate;}  
+        if ($validate) { return $validate;}
         
         $db = $this->db->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
         $db->bindValue(':username', $data['username'], PDO::PARAM_STR);
